@@ -58,7 +58,7 @@ function App() {
       </div>
       <form action="#" onSubmit={handleSubmit}>
         <div className="row answer">
-          <p data-testid="result">{text}</p>
+          <p id="result">{text}</p>
         </div>
         <div className="row input">
           <input
@@ -66,7 +66,7 @@ function App() {
             placeholder="..."
             value={operand1}
             onChange={handleOperand1}
-            data-testid="operand1"
+            id="operand1"
           />
         </div>
         <div className="row input">
@@ -75,54 +75,54 @@ function App() {
             placeholder="..."
             value={operand2}
             onChange={handleOperand2}
-            data-testid="operand2"
+            id="operand2"
           />
         </div>
         <div className="operations">
           <div
-            data-testid="operation-*"
+            id="operation-*"
             className={operation === "*" ? "selected box" : "box"}
             onClick={() => handleOperation("*")}
           >
             <p>*</p>
           </div>
           <div
-            data-testid="operation-/"
+            id="operation-/"
             className={operation === "/" ? "selected box" : "box"}
             onClick={() => handleOperation("/")}
           >
             <p>/</p>
           </div>
           <div
-            data-testid="operation-+"
+            id="operation-+"
             className={operation === "+" ? "selected box" : "box"}
             onClick={() => handleOperation("+")}
           >
             <p>+</p>
           </div>
           <div
-            data-testid="operation--"
+            id="operation--"
             className={operation === "-" ? "selected box" : "box"}
             onClick={() => handleOperation("-")}
           >
             <p>-</p>
           </div>
           <div
-            data-testid="operation-**"
+            id="operation-**"
             className={operation === "**" ? "selected box" : "box"}
             onClick={() => handleOperation("**")}
           >
             <p>**</p>
           </div>
           <div
-            data-testid="operation-log"
+            id="operation-log"
             className={operation === "log" ? "selected box" : "box"}
             onClick={() => handleOperation("log")}
           >
             <p>log</p>
           </div>
           <div
-            data-testid="operation-ln"
+            id="operation-ln"
             className={operation === "ln" ? "selected box" : "box"}
             onClick={() => handleOperation("ln")}
           >
@@ -132,7 +132,7 @@ function App() {
             <p>Reset</p>
           </div>
         </div>
-        <button data-testid="operate-button" type="submit">
+        <button id="operate-button" type="submit">
           Operate
         </button>
       </form>
