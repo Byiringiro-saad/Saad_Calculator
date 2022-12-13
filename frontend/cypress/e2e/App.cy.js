@@ -1,9 +1,4 @@
 describe("Home Page", () => {
-  it("Renders correctly", () => {
-    cy.visit("http://localhost:5173");
-    cy.contains("form");
-  });
-
   it("Performs multiplication", () => {
     // Enter operands and select operation
     cy.get('[data-testid="operand1"]').type("2");
