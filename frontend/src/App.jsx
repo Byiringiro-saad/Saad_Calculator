@@ -22,21 +22,29 @@ function App() {
     setOperation(value);
   };
 
+  const handleReset = () => {
+    setOperand1("");
+    setOperand2("");
+    setOperation("");
+    setText("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios
-      .post("/math/doMath", {
-        operand1: parseInt(operand1),
-        operand2: parseInt(operand2),
-        operation: operation,
-      })
-      .then((response) => {
-        setText(`${text} = ${response?.calcResponse}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (operand1 && operand2 && operation) {
+      await axios
+        .post("/math/doMath", {
+          one: parseInt(operand1),
+          two: parseInt(operand2),
+          operation: operation,
+        })
+        .then((response) => {
+          setText(`${text} = ${response?.data?.calcResponse}`);
+        });
+    } else {
+      alert("Something is missing");
+    }
   };
 
   useEffect(() => {
@@ -50,7 +58,7 @@ function App() {
       </div>
       <form action="#" onSubmit={handleSubmit}>
         <div className="row answer">
-          <p>{text}</p>
+          <p data-testid="result">{text}</p>
         </div>
         <div className="row input">
           <input
@@ -58,6 +66,7 @@ function App() {
             placeholder="..."
             value={operand1}
             onChange={handleOperand1}
+            data-testid="operand1"
           />
         </div>
         <div className="row input">
@@ -66,53 +75,66 @@ function App() {
             placeholder="..."
             value={operand2}
             onChange={handleOperand2}
+            data-testid="operand2"
           />
         </div>
         <div className="operations">
           <div
+            data-testid="operation-*"
             className={operation === "*" ? "selected box" : "box"}
             onClick={() => handleOperation("*")}
           >
             <p>*</p>
           </div>
           <div
+            data-testid="operation-/"
             className={operation === "/" ? "selected box" : "box"}
             onClick={() => handleOperation("/")}
           >
             <p>/</p>
           </div>
           <div
+            data-testid="operation-+"
             className={operation === "+" ? "selected box" : "box"}
             onClick={() => handleOperation("+")}
           >
             <p>+</p>
           </div>
           <div
+            data-testid="operation--"
             className={operation === "-" ? "selected box" : "box"}
             onClick={() => handleOperation("-")}
           >
             <p>-</p>
           </div>
           <div
+            data-testid="operation-**"
             className={operation === "**" ? "selected box" : "box"}
             onClick={() => handleOperation("**")}
           >
             <p>**</p>
           </div>
           <div
+            data-testid="operation-log"
             className={operation === "log" ? "selected box" : "box"}
             onClick={() => handleOperation("log")}
           >
             <p>log</p>
           </div>
           <div
+            data-testid="operation-ln"
             className={operation === "ln" ? "selected box" : "box"}
             onClick={() => handleOperation("ln")}
           >
             <p>ln</p>
           </div>
+          <div className="box reset" onClick={handleReset}>
+            <p>Reset</p>
+          </div>
         </div>
-        <button type="submit">Operate</button>
+        <button data-testid="operate-button" type="submit">
+          Operate
+        </button>
       </form>
     </Container>
   );
