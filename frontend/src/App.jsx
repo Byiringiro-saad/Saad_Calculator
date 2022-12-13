@@ -5,10 +5,10 @@ import React, { useEffect, useState } from "react";
 import axios from "./features/axios";
 
 function App() {
+  const [text, setText] = useState("");
   const [operand1, setOperand1] = useState("");
   const [operand2, setOperand2] = useState("");
   const [operation, setOperation] = useState("");
-  const [text, setText] = useState("");
 
   const handleOperand1 = (e) => {
     setOperand1(e.target.value);

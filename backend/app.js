@@ -8,7 +8,8 @@ import mathRoutes from "./routes/math.routes.js";
 const app = express();
 
 //config
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 //routes
