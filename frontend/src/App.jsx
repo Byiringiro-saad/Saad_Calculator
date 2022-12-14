@@ -80,35 +80,35 @@ function App() {
         </div>
         <div className="operations">
           <div
-            id="operation-*"
+            id="operation-multi"
             className={operation === "*" ? "selected box" : "box"}
             onClick={() => handleOperation("*")}
           >
             <p>*</p>
           </div>
           <div
-            id="operation-/"
+            id="operation-divide"
             className={operation === "/" ? "selected box" : "box"}
             onClick={() => handleOperation("/")}
           >
             <p>/</p>
           </div>
           <div
-            id="operation-+"
+            id="operation-add"
             className={operation === "+" ? "selected box" : "box"}
             onClick={() => handleOperation("+")}
           >
             <p>+</p>
           </div>
           <div
-            id="operation--"
+            id="operation-subtr"
             className={operation === "-" ? "selected box" : "box"}
             onClick={() => handleOperation("-")}
           >
             <p>-</p>
           </div>
           <div
-            id="operation-**"
+            id="operation-power"
             className={operation === "**" ? "selected box" : "box"}
             onClick={() => handleOperation("**")}
           >
@@ -128,7 +128,7 @@ function App() {
           >
             <p>ln</p>
           </div>
-          <div className="box reset" onClick={handleReset}>
+          <div className="box reset" onClick={handleReset} id="reset">
             <p>Reset</p>
           </div>
         </div>
